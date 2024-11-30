@@ -77,6 +77,27 @@ public final class NSCacheObject<T: Cacheable>: NSObject, Codable {
 
 ## 🧑‍💻 사용 예제
 
+### 0. `Cacheable` 을 채택하는 Sample struct
+```swift
+struct SampleCacheableObject: Cacheable {
+    var id: String
+    var expiration: CacheStorageExpiration
+    
+    init(id: String, expiration: CacheStorageExpiration) {
+        self.id = id
+        self.expiration = expiration
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: SampleCacheableObject, rhs: SampleCacheableObject) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+```
+
 ### 1. Memory, Disk Configuration 정의 및 CacheStorage 객체 생성
 - memory, disk configuration 을 정의할 때, Key로 사용될 타입과 저장될 Object의 타입을 지정해주어야 합니다.
 ```swift
