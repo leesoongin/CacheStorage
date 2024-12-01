@@ -14,12 +14,12 @@
 - **NSCacheKey.swift**: `Hashable` 프로토콜을 준수하여 `NSCache`에서 안전하게 키를 사용할 수 있도록 구현.
 - **NSCacheObject.swift**: 캐시에서 객체를 안전하게 관리하기 위한 래퍼 클래스.
 
-### ❗ 동시성 이슈 발생 및 해결 방안 ❗
+### ❗ 동시성 이슈 방지 ❗
 
-- **문제점**:  
+- **이슈**:  
   하나의 `storage`에서 동시에 **Read** 및 **Write** 동작이 반복될 경우, 의도하지 않은 결과가 발생할 가능성이 존재합니다.
 
-- **해결 방안**:  
+- **Serial Queue**:  
   동시성 문제를 방지하기 위해, `memoryStorage`와 `diskStorage` 내부에서 각각의 **Save**, **Retrieve**, **Remove** 등의 동작이 **Serial Queue**에서 실행되도록 구현되었습니다. 이를 통해 동시성 문제가 발생하지 않도록 안전한 환경을 보장합니다.
 
 
