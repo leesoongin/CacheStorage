@@ -40,9 +40,8 @@ flowchart TB
     A --> Functionalities
 
     %% Styles
-    classDef main fill:#F8F9FA,stroke:#BDB7D1,stroke-width:2px,color:black;  %% Ensure black text
-    classDef sub fill:#ECECEC,stroke:#BDB7D1,stroke-width:2px,color:black;  %% Ensure black text
-
+    classDef main fill:#DFFFD6,stroke:#333,stroke-width:2,color:#000;
+    classDef sub fill:#DFFFD6,stroke:#333,stroke-width:2,color:#000;
 
 ```
 
