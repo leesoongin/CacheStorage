@@ -3,6 +3,49 @@
 `CacheStorage`는 iOS에서 메모리(NSCache)와 디스크(FileManager)를 활용하여 데이터를 효과적으로 캐싱할 수 있는 라이브러리입니다.
 데이터를 저장, 조회, 삭제할 수 있으며, 캐싱 변경 사항을 Combine 퍼블리셔를 통해 실시간으로 구독할 수 있습니다.
 
+```mermaid
+flowchart TB
+    %% CacheStorage Overview
+    subgraph CacheStorage
+        direction TB
+        A[CacheStorage]:::main
+        
+        subgraph Memory_Caching
+            direction TB
+            B[MemoryStorage]:::sub
+            B --> D[NSCache]:::main
+            D -.-> F[NSCacheKey]:::main
+            D -.-> G[NSCacheObject]:::main
+        end
+
+        subgraph Disk_Caching
+            direction TB
+            C[DiskStorage]:::sub
+            C --> E[FileManager]:::main
+        end
+
+        subgraph Functionalities
+            direction TB
+            H[Save]:::sub
+            I[Retrieve]:::sub
+            J[Remove]:::sub
+            K[RemoveAll]:::sub
+            L[StorageObserver]:::sub
+        end
+    end
+
+    %% Connections
+    A --> Memory_Caching
+    A --> Disk_Caching
+    A --> Functionalities
+
+    %% Styles
+    classDef main fill:#F8F9FA,stroke:#BDB7D1,stroke-width:2px,color:black;  %% Ensure black text
+    classDef sub fill:#ECECEC,stroke:#BDB7D1,stroke-width:2px,color:black;  %% Ensure black text
+
+
+```
+
 ---
 
 ## 목차
